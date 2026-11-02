@@ -1,0 +1,74 @@
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.buttonPrimary {
+  background: var(--primary);
+  color: var(--accent-ink);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+}
+.buttonPrimary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+.buttonPrimary:disabled {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+.buttonSecondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+}
+.buttonSecondary:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--border-light);
+}
+.buttonSecondary:disabled {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+.buttonSuccess {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+}
+.buttonSuccess:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+.buttonSuccess:disabled {
+  border-color: var(--border);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+.input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+}
+.input:focus {
+  border-color: var(--primary);
+}
+.input::placeholder {
+  color: var(--text-muted);
+}

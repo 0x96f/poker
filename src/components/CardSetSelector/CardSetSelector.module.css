@@ -1,0 +1,297 @@
+.cardSetSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cardSetSelectorDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.5rem 0;
+}
+
+.cardSetSelectorTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+  text-align: center;
+}
+
+.cardSetPresets {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.cardSetPresetButton {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms;
+  text-align: center;
+}
+.cardSetPresetButton:hover:not(.selected) {
+  background: var(--bg-hover);
+  border-color: var(--primary);
+}
+.cardSetPresetButton.selected {
+  background: var(--primary);
+  color: var(--accent-ink);
+  border-color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.cardSetEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  animation: fadeIn 0.2s ease;
+}
+
+.cardSetEditorHeader {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardSetEditorReset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 150ms;
+}
+.cardSetEditorReset:hover {
+  background: var(--bg-hover);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.cardSetEditorCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.cardSetEditorCard {
+  width: 68px;
+  height: 84px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  position: relative;
+  cursor: grab;
+  transition: all 150ms;
+}
+.cardSetEditorCard:active {
+  cursor: grabbing;
+}
+.cardSetEditorCard.duplicateWarning {
+  border-color: var(--warning);
+  background: rgb(from var(--warning) r g b/0.1);
+}
+.cardSetEditorCard.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+  cursor: grabbing;
+}
+.cardSetEditorCard.dragging * {
+  cursor: grabbing;
+  pointer-events: none;
+}
+.cardSetEditorCard.dragging .cardSetEditorCardLabel,
+.cardSetEditorCard.dragging .cardSetEditorCardLabel:hover,
+.cardSetEditorCard.dragging .cardSetEditorCardLabel:focus,
+.cardSetEditorCard.dragging .cardSetEditorCardValue,
+.cardSetEditorCard.dragging .cardSetEditorCardValue:hover,
+.cardSetEditorCard.dragging .cardSetEditorCardValue:focus {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+.cardSetEditorCard.dragOver {
+  border-color: var(--primary);
+  background: rgb(from var(--primary) r g b/0.15);
+  transform: scale(1.02);
+}
+
+.cardSetEditorCardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 100%;
+  position: relative;
+}
+.cardSetEditorCardContent::before {
+  content: '✏️';
+  position: absolute;
+  top: 0.35rem;
+  left: 50%;
+  transform: translateX(-50%) scaleX(-1);
+  font-size: 1.25rem;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+.cardSetEditorCardContent:has(
+    .cardSetEditorCardLabel:not(:placeholder-shown)
+  )::before {
+  display: none;
+}
+
+.cardSetEditorCardLabel {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--text-disabled);
+  outline: none;
+  width: 85%;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition:
+    background 150ms,
+    border-color 150ms;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  position: relative;
+  z-index: 2;
+}
+.cardSetEditorCardLabel:hover,
+.cardSetEditorCardLabel:focus {
+  background: rgb(from var(--primary) r g b/0.1);
+  border-color: var(--primary);
+}
+.cardSetEditorCardLabel:not(:placeholder-shown) {
+  border-color: transparent;
+}
+.cardSetEditorCardLabel:not(:placeholder-shown):hover,
+.cardSetEditorCardLabel:not(:placeholder-shown):focus {
+  border-color: var(--primary);
+}
+
+.cardSetEditorCardLabelText {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.cardSetEditorCardValue {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--text-disabled);
+  text-align: center;
+  background: transparent;
+  border: 1px dashed var(--border);
+  outline: none;
+  width: 85%;
+  padding: 0.125rem;
+  border-radius: 4px;
+  transition:
+    background 150ms,
+    border-color 150ms;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.cardSetEditorCardValue:hover,
+.cardSetEditorCardValue:focus {
+  background: rgb(from var(--primary) r g b/0.1);
+  border-color: var(--primary);
+}
+.cardSetEditorCardValue:not(:placeholder-shown) {
+  border-color: transparent;
+}
+.cardSetEditorCardValue:not(:placeholder-shown):hover,
+.cardSetEditorCardValue:not(:placeholder-shown):focus {
+  border-color: var(--primary);
+}
+.cardSetEditorCardValue::placeholder {
+  color: var(--text-muted);
+  opacity: 0.4;
+  font-style: italic;
+  font-size: 0.5rem;
+}
+
+.cardSetEditorCardRemove {
+  position: absolute;
+  top: 0.125rem;
+  right: 0.125rem;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgb(from var(--border) r g b/0.5);
+  color: var(--text-secondary);
+  font-size: 0.5rem;
+  cursor: pointer;
+  transition: all 150ms;
+  z-index: 10;
+  opacity: 0;
+}
+.cardSetEditorCard:hover .cardSetEditorCardRemove {
+  opacity: 0.6;
+}
+.cardSetEditorCardRemove:hover {
+  background: var(--text);
+  color: var(--accent-ink);
+  opacity: 1;
+}
+
+.cardSetEditorAddCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 150ms;
+  min-width: 68px;
+  min-height: 84px;
+}
+.cardSetEditorAddCard:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  border-style: solid;
+  color: var(--accent-ink);
+}

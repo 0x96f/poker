@@ -1,0 +1,64 @@
+.confettiContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.confettiParticle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confetti-burst 5s ease-out forwards;
+}
+
+.confettiEmoji {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0;
+  animation: confetti-burst 5s ease-out forwards;
+}
+
+@keyframes confetti-burst {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) scale(0);
+  }
+  5% {
+    opacity: var(--opacity-5, 0);
+    transform: translate(
+        calc(var(--velocity-x) * 0.05),
+        calc(var(--velocity-y) * 0.05)
+      )
+      rotate(calc(var(--rotation, 360deg) * 0.4)) scale(var(--scale, 1));
+  }
+  10% {
+    opacity: var(--opacity-10, 0);
+  }
+  20% {
+    opacity: var(--opacity-20, 0);
+  }
+  30% {
+    opacity: var(--opacity-30, 0);
+  }
+  40% {
+    opacity: var(--opacity-40, 0);
+  }
+  50% {
+    opacity: var(--opacity-50, 1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--velocity-x), var(--velocity-y))
+      rotate(calc(var(--rotation, 360deg) * 8)) scale(var(--scale, 1));
+  }
+}

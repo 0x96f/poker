@@ -1,0 +1,59 @@
+:root {
+  --primary: #ffca58;
+  --primary-hover: #ffd56e;
+  --primary-light: #e0b04a;
+  --success: #ffca58;
+  --success-hover: #ffd56e;
+  --warning: #ffca58;
+  --bg: #262427;
+  --bg-elevated: #2e2c2f;
+  --bg-hover: #ffffff17;
+  --border: #ffffff1f;
+  --border-light: #ffffff2e;
+  --text: #fff;
+  --text-secondary: #ffffff8f;
+  --text-muted: #ffffff80;
+  --text-disabled: #ffffff59;
+  --white: #fff;
+  --accent-ink: #262427;
+  --radius: 8px;
+  --font-mono:
+    'Geist Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button,
+input {
+  font-family: inherit;
+}

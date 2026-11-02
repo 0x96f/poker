@@ -1,0 +1,143 @@
+.gameSettingsButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  color: var(--text-muted);
+}
+.gameSettingsButton:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-light);
+  color: var(--text-secondary);
+}
+.gameSettingsButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.gameSettingsDialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.gameSettingsDialog {
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.gameSettingsDialogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.gameSettingsDialogTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+}
+
+.gameSettingsDialogClose {
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+.gameSettingsDialogClose:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.gameSettingsDialogContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.gameSettingsDialogFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.gameSettingsDialogCancel {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.gameSettingsDialogCancel:hover {
+  background: var(--bg-hover);
+  border-color: var(--text);
+}
+
+.gameSettingsDialogSubmit {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--accent-ink);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.gameSettingsDialogSubmit:hover {
+  background: var(--primary-hover);
+}
+@media (max-width: 640px) {
+  .gameSettingsDialogOverlay {
+    padding: 0.75rem;
+  }
+  .gameSettingsDialog {
+    max-height: 92vh;
+  }
+  .gameSettingsDialogHeader,
+  .gameSettingsDialogContent,
+  .gameSettingsDialogFooter {
+    padding: 1rem;
+  }
+  .gameSettingsDialogTitle {
+    font-size: 1.25rem;
+  }
+  .gameSettingsDialogFooter {
+    flex-direction: column-reverse;
+  }
+  .gameSettingsDialogCancel,
+  .gameSettingsDialogSubmit {
+    width: 100%;
+  }
+}

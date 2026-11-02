@@ -1,0 +1,36 @@
+.emojiProjectile {
+  position: absolute;
+  font-size: 0.85rem;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  animation: projectile-throw 1s ease-out forwards;
+}
+
+@keyframes projectile-throw {
+  0% {
+    opacity: 1;
+    transform: translate(var(--start-x, -200px), var(--start-y, -100px))
+      rotate(var(--rotation, -180deg)) scale(0.8);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(var(--impact-x, 0px), var(--impact-y, 0px))
+      rotate(0deg) scale(1.1);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(var(--impact-x, 0px), var(--impact-y, 0px))
+      rotate(0deg) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(var(--bounce-x, 0px), var(--bounce-y, 0px))
+      rotate(calc(var(--rotation, 180deg) * -0.3)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--bounce-x, 0px), var(--bounce-y, 0px))
+      rotate(calc(var(--rotation, 180deg) * -0.3)) scale(0.2);
+  }
+}

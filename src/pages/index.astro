@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import shared from '../styles/primitives.module.css';
+import styles from './home.module.css';
+---
+
+<Layout>
+  <main class={styles.homePage}>
+    <div class={styles.homeContent}>
+      <header class={styles.homeHeader}>
+        <h1 class={styles.homeTitle}>Planning Poker</h1>
+      </header>
+      <div class={`${shared.card} ${styles.homeCard}`}>
+        <button
+          id="create-game"
+          class={`${shared.buttonPrimary} ${styles.homeCreateButton}`}
+        >
+          Create New Game
+        </button>
+        <div class={styles.homeDivider}>
+          <span class={styles.homeDividerText}>or join existing</span>
+        </div>
+        <form id="join-game" class={styles.homeForm}>
+          <div class={styles.homeFormGroup}>
+            <label for="gameId" class={styles.homeLabel}>
+              Game ID
+            </label>
+            <input
+              type="text"
+              id="gameId"
+              name="gameId"
+              required
+              maxlength="64"
+              pattern="[a-zA-Z0-9_-]{1,64}"
+              placeholder="Enter game ID"
+              class={shared.input}
+            />
+          </div>
+          <button
+            type="submit"
+            id="join-button"
+            disabled
+            class={`${shared.buttonSecondary} ${styles.homeJoinButton}`}
+          >
+            Join Game
+          </button>
+        </form>
+      </div>
+      <p class={styles.homeFooter}>
+        Share the game ID with your team to collaborate
+      </p>
+    </div>
+  </main>
+</Layout>
+<script>
+  import { generateGameId } from '../lib/game-utils.js';
+  const createButton = document.getElementById('create-game');
+  const form = document.getElementById('join-game');
+  const input = document.getElementById('gameId');
+  const joinButton = document.getElementById('join-button');
+  createButton.addEventListener('click', () =>
+    window.location.assign(`/game/${generateGameId()}`)
+  );
+  input.addEventListener('input', () => {
+    joinButton.disabled = !input.value.trim();
+  });
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const id = input.value.trim();
+    if (/^[a-zA-Z0-9_-]{1,64}$/.test(id)) window.location.assign(`/game/${id}`);
+  });
+</script>

@@ -1,0 +1,27 @@
+.emojiPicker {
+  position: absolute;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.emojiPickerButton {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.15s ease;
+}
+.emojiPickerButton:hover {
+  background: var(--bg-hover);
+}
+.emojiPickerButton:not(:last-child) {
+  border-right: 1px solid var(--border);
+}

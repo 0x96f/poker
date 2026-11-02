@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GameEntry from '../components/GameEntry.jsx';
+---
+
+<Layout>
+  <GameEntry client:only="react">
+    <p slot="fallback" role="status">
+      Loading game...
+    </p>
+  </GameEntry>
+  <noscript>Enable JavaScript to join a game.</noscript>
+</Layout>

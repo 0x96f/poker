@@ -1,0 +1,188 @@
+.votingSectionBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.votingHint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.votingCardsBottom {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.votingCardSmall {
+  width: 68px;
+  height: 84px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.votingCardSmall:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--primary);
+}
+.votingCardSmall.selected {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.votingCardSmall.selected .votingCardTitle,
+.votingCardSmall.selected .votingCardEmoji {
+  color: var(--accent-ink);
+}
+.votingCardSmall.selected:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+.votingCardSmall.mostCommon {
+  background: rgb(from var(--success) r g b/var(--vote-opacity, 0.3));
+  border-color: var(--success);
+}
+.votingCardSmall.mostCommon:hover {
+  background: rgb(from var(--success) r g b/var(--vote-opacity, 0.3));
+  border-color: var(--success);
+}
+.votingCardSmall.hasVotes {
+  background: rgb(from var(--success) r g b/var(--vote-opacity, 0.15));
+  border-color: rgb(
+    from var(--success) r g b/calc(var(--vote-opacity, 0.1) + 0.3)
+  );
+}
+.votingCardSmall.hasVotes:hover {
+  background: rgb(from var(--success) r g b/var(--vote-opacity, 0.15));
+  border-color: rgb(
+    from var(--success) r g b/calc(var(--vote-opacity, 0.1) + 0.3)
+  );
+  transform: none;
+}
+.votingCardSmall.noVotes {
+  opacity: 0.3;
+}
+.votingCardSmall.noVotes:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border);
+  transform: none;
+}
+.votingCardSmall.unanimous .votingCardEmoji {
+  font-size: 3rem;
+  animation: wiggle-celebrate 10s ease-in-out;
+}
+
+@keyframes wiggle-celebrate {
+  0% {
+    transform: rotate(0deg);
+  }
+  3% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  6% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  9% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  12% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  15% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  18% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  21% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  24% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  27% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  30% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  33% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  36% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  39% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  42% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  45% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  48% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  51% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  54% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+.votingCardEmoji {
+  font-size: 1.5rem;
+  transition:
+    font-size 0.3s ease,
+    color 0.2s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  color: var(--text-disabled);
+}
+.presetFibonacci .votingCardEmoji {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.votingCardTitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-disabled);
+}
+
+.votingCardPercentage {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--success) 45%, white);
+  text-shadow: 0 0 30px var(--bg);
+}
+
+@media (max-width: 640px) {
+  .votingCardsBottom {
+    gap: 0.375rem;
+  }
+  .votingCardSmall {
+    width: 52px;
+    height: 68px;
+  }
+  .votingCardEmoji {
+    font-size: 1.25rem;
+  }
+}

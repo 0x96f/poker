@@ -1,0 +1,101 @@
+.homePage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.homeContent {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.homeHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.homeTitle {
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.homeCard {
+  padding: 2.5rem;
+}
+
+.homeCard .homeCreateButton {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+}
+
+.homeDivider {
+  display: flex;
+  align-items: center;
+  margin: 1.75rem 0;
+}
+.homeDivider::before,
+.homeDivider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.homeDividerText {
+  padding: 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.homeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.homeFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.homeLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.homeJoinButton {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+}
+
+.homeFooter {
+  text-align: center;
+  margin-top: 1.75rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .homePage {
+    padding: 1rem;
+  }
+  .homeCard {
+    padding: 1.75rem 1.25rem;
+  }
+  .homeTitle {
+    font-size: 1.75rem;
+  }
+  .homeHeader {
+    margin-bottom: 2rem;
+  }
+}
