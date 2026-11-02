@@ -7,11 +7,11 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "npm run build && wrangler dev",
+    "dev": "wrangler dev",
     "build": "astro build",
-    "preview": "npm run build && wrangler dev",
+    "preview": "wrangler dev",
     "start": "wrangler dev",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "wrangler deploy",
     "lint": "eslint .",
     "format": "prettier . --write",
     "format:check": "prettier . --check",

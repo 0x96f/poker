@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:8787. The development command builds Astro and runs the complete application in Wrangler, including Durable Objects. After changing frontend code, stop and rerun the command to rebuild it. Wrangler reloads Worker source changes automatically. `npm start` serves an existing build.
+Open http://localhost:8787. The development command builds Astro and runs the complete application in Wrangler, including Durable Objects. After changing frontend code, stop and rerun the command to rebuild it. Wrangler reloads Worker source changes automatically. `npm start` also builds the assets before starting Wrangler.
 
 ## Checks
 
@@ -56,6 +56,8 @@ The API and event names, room storage shape, stable player identity key `plannin
 ```sh
 npm run deploy
 ```
+
+Local Wrangler commands run `npm run build` through the custom build configuration. Cloudflare Workers Builds does not honor Wrangler custom builds, so configure its Build command as `npm run build` and its Deploy command as `npx wrangler deploy`. The root directory must contain this project's `package.json` and `wrangler.jsonc`.
 
 This deploys a separate Worker named `planning-poker-astro` with a new Durable Object namespace. No production deployment has been performed as part of the migration.
 

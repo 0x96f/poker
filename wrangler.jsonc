@@ -2,6 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "planning-poker-astro",
   "main": "worker.js",
+  "build": { "command": "npm run build" },
   "compatibility_date": "2026-11-02",
   "compatibility_flags": ["nodejs_compat"],
   "durable_objects": {
