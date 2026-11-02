@@ -66,18 +66,20 @@ export class GameRoom extends DurableObject {
     }
   }
   async persist() {
-    await this.ctx.storage.put('room', this.room);
     const deadlines = [...this.room.disconnects.values()];
     if (!this.activeUsers().size && this.room.users.length) {
       deadlines.push(this.room.lastActivityAt + ROOM_TTL_MS);
     }
-    if (deadlines.length) {
-      await this.ctx.storage.setAlarm(
-        Math.max(Date.now() + 1, Math.min(...deadlines))
-      );
-    } else {
-      await this.ctx.storage.deleteAlarm();
-    }
+    // Queue both writes before awaiting so Cloudflare can coalesce them into
+    // one transaction. A separate await adds a storage commit before broadcast.
+    await Promise.all([
+      this.ctx.storage.put('room', this.room),
+      deadlines.length
+        ? this.ctx.storage.setAlarm(
+            Math.max(Date.now() + 1, Math.min(...deadlines))
+          )
+        : this.ctx.storage.deleteAlarm(),
+    ]);
   }
   resetVotes() {
     this.room.votes.clear();
